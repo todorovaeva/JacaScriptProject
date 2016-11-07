@@ -2,100 +2,131 @@
 <html>
 <head>
 <script src="js/jquery-3.1.1.js"></script>
-	<title></title>
+	<title>Java Script Project</title>
+	<style type="text/css">
+div h1 h2 body{margin: 0px; padding: 0px;}
+#periodscontainer{
+	margin:15px 0 15px 0;
+	background-color: #999;
+    width: 600px;
+}
+#start{
+	width: 200px;
+	float: left;
+	padding: 5px 0 0 0;
+	}
+#end{
+	width: 200px;
+	float: right;
+	padding: 5px 200px 0 0;
+	}
+#submit{
+	margin:15px 0 20px 0;
+}
+	</style>
+
+
+
 </head>
 <body>
 <div id="container">
+<h1>IVo's Tasks Manager $$$</h1>
+</div>
+<br><br><br>
 <label>Enter days:</label>
 <input id="days" type="text" name="days" value=""></input>
-
 <label>Enter Tasks:</label>
-<input id="tasks" type="text" name="periods" value=""></input>
+<input id="tasks" type="text" name="tasks" value=""></input>
 
-<input id="submit" type="submit" name="submit" value="submit"></input>
-</div>
+<input type='button' value='Add Fields' id='addButton'>
+<div id='TextBoxesGroup'><br></div>
 
-<br><br><br>
-<div id='TextBoxesGroup'>
-	<div id="TextBoxDiv1">
-		<label>Textbox #1 : </label><input type='textbox' id='textbox1' >
-	</div><br>
-</div>
-<input type='button' value='Add Button' id='addButton'>
-<input type='button' value='Remove Button' id='removeButton'>
-<input type='button' value='Get TextBox Value' id='getButtonValue'>
 
- 
+<!-- <input type='button' value='Remove Button' id='removeButton'>-->
+ <div id="datafields"><h3></h3></div>
 <script type="text/javascript">
-$(document).ready(
-	function(ev){
-		// ev.preventDefault();
-    $('#submit').click(function(){
-        
-    });
-});
-
-// $('#days').on('change', function() {
-//   alert( this.value ); // or $(this).val()
-// });
 
 
-// ADD BUTTONS SCRIPT
+      //START OF ADD FIELDS SCRIPT
 
 
 $(document).ready(function(){
-var counter = 2;
+ var counter = 0;
 
     $("#addButton").click(function () {
     	var days = $("#days").val();
     	var tasks = $("#tasks").val();
 
-	// if(counter>15){
- //            alert("Only 15 textboxes allow");
- //            return false;
-	// }
-for (var i = 0; i < days; i++){
-	var newTextBoxDiv = $(document.createElement('div'))
-	     .attr("id", 'TextBoxDiv' + counter);
 
-	newTextBoxDiv.after().html('<label>Textbox #'+ counter + ' : </label>' +
-	      '<input type="text" name="textbox' + counter +
-	      '" id="textbox' + counter + '" value="" >');
+      //START OF DAYS CYCLE
+for (var i = 0; i < days; i++){
+	
+	var newTextBoxDiv = $(document.createElement('div'))
+	     .attr("class", 'TextBoxDiv', counter++);
+
+	newTextBoxDiv.after().html('<label>Tasks/Day #'+ counter + ' : </label>' +
+	      '<input type="text" name="textbox" class="days" value="" >');
 
 	newTextBoxDiv.appendTo("#TextBoxesGroup");
 }
 
-
-	
- //    // REMOVE BUTTON ----------------------------------------------
-
- //     $("#removeButton").click(function () {
-	// if(counter==1){
- //          alert("No more textbox to remove");
- //          return false;
- //       }
-
-	// counter--;
-
- //        $("#TextBoxDiv" + counter).remove();
-
- //     });
-
- //     $("#getButtonValue").click(function () {
-
-	// var msg = '';
-	// for(i=1; i<counter; i++){
- //   	  msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
-	// }
- //    	  alert(msg);
- //     });
- //  });
+	  //START OF PERIODS CYCLE
+var periodscontainer = $(document.createElement('div'))
+	.attr("id", 'periodscontainer');
+	periodscontainer.appendTo("#TextBoxesGroup");
 	
 
+var start = $(document.createElement('div'))
+	.attr("id", 'start');
+	start.appendTo("#periodscontainer");
 
 
+for (var i = 0; i < tasks; i++){
+	var TextBoxDivStart = $(document.createElement('div'))
+	     .attr("id", 'TextBoxDivStart');
+
+	TextBoxDivStart.after().html('<label>Start Day: </label>' +
+	      '<input type="text" name="textbox" class="tasksstart" value="" >');
+
+	TextBoxDivStart.appendTo("#start");
+}
 
 
+var end = $(document.createElement('div'))
+	.attr("id", 'end');
+	end.appendTo("#periodscontainer");
+
+for (var i = 0; i < tasks; i++) {
+	var TextBoxDivEnd = $(document.createElement('div'))
+	     .attr("id", 'TextBoxDivEnd');
+	TextBoxDivEnd.after().html('<label>End Day: </label>'+
+	'<input type="text" name="textbox" class="tasksend" value="" >');
+
+	TextBoxDivEnd.appendTo("#end");    
+
+
+}    //END OF PERIODS CYCLE
+
+});  //END OF ADD FIELDS SCRIPT AND ALL CYCLES
+
+     //START OF submit data button
+
+var submit = $('<button>Submit Data</button>').attr({"id": 'submit'});
+
+	submit.appendTo("#datafields");
+
+     //START OF take value for each day function
+$("#submit").click( function(){
+	console.log(1)
+var divArr = $('.days');
+console.log(divArr);
+
+var len = divArr.length;
+	for(var i = 0; i < len; i++){
+		console.log(divArr[i].value);
+	}
+});
+  });
 
 
 

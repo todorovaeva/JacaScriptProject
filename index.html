@@ -3,8 +3,50 @@
 <head>
 <script src="js/jquery-3.1.1.js"></script>
 	<title>Java Script Project</title>
+	<link rel="stylesheet" href="css/style.css" charset="utf-8" />
 	<style type="text/css">
-div h1 h2 body{margin: 0px; padding: 0px;}
+div h1 h2 body{margin: 0px; padding: 0px; }
+h1 {padding: 50px; font-size:22px; background-color: #c5f442; 
+-webkit-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
+-moz-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
+box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
+}
+body {
+	font-family: Arial;
+	color:#333;
+background: url('images/background.jpg');
+background-color:#fff ;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#container{
+	float:left;
+	width: 50%;
+	float: left;
+    width: 50%;
+    padding: 20px;
+    margin-top: 50px;
+    background-color: #cdf6f6;
+    -webkit-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
+    -moz-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
+    box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
+}
+#calculator{
+	float: right;
+    padding: 50px 200px 0 0;
+
+}
+#sizecontrol{
+	margin-bottom: 25px;
+	padding: 10px;
+	background-color: #c5f442;
+	-webkit-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
+    -moz-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
+	box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
+}
 #periodscontainer{
 	margin:15px 0 15px 0;
 	background-color: #999;
@@ -23,16 +65,83 @@ div h1 h2 body{margin: 0px; padding: 0px;}
 #submit{
 	margin:15px 0 20px 0;
 }
+
+.main {
+width:200px;
+border:1px solid black;
+}
+ 
+.month {
+background-color:black;
+font:bold 12px verdana;
+color:white;
+}
+ 
+.daysofweek {
+background-color:gray;
+font:bold 12px verdana;
+color:white;
+}
+ 
+.days {
+font-size: 12px;
+font-family:verdana;
+color:black;
+background-color:#fff;
+padding: 2px;
+}
+ 
+.days #today{
+font-weight: bold;
+color: red;
+}
 	</style>
 
+<!-- doc text resizer -->	
 
+<link href="textresize/doctextsizer.css" rel="stylesheet" type="text/css" />
 
+<script type="text/javascript" src="textresize/doctextsizer.js"></script>
+<!-- end dov text resizer -->
+<!-- calculator-calendar -->
+<link rel="stylesheet" media="screen, print, handheld" type="text/css" href="css/calculator.css" />
+<script type="text/javascript" src="js/calculator.js"></script>
+<link rel="stylesheet" media="screen, print, handheld" type="text/css" href="css/calendar.css" />
+        <script type="text/javascript" src="js/calendar.js"></script>
+<!-- end calculator aclendar -->
 </head>
+
 <body>
+<audio src="audio/Deep Purple - Sometimes I Feel Like Screaming.mp3" controls preload="auto"></audio>
+<script>
+if (document.layers)
+var ns4def=''
+</script>
+<h1>Дневникът на Иво</h1>
+<h2 id="flyin" style="position:relative;left:-1200px; font-style:italic; color:red;" style=&{ns4def};>Иво, въведи брой дни и период, за който искаш да изчислиш!</h2>
+<script language="JavaScript1.2">
+
+if (document.getElementById||document.all)
+var crossheader=document.getElementById? document.getElementById("flyin").style : document.all.flyin.style
+
+function animatein(){
+if (parseInt(crossheader.left)<0)
+crossheader.left=parseInt(crossheader.left)+20+"px"
+else{
+crossheader.left=0
+crossheader.fontStyle="normal"
+clearInterval(start)
+}
+}
+
+if (document.getElementById||document.all)
+start=setInterval("animatein()",50)
+</script>
+
+
+
 <div id="container">
-<h1>IVo's Tasks Manager $$$</h1>
-</div>
-<br><br><br>
+
 <label>Enter days:</label>
 <input id="days" type="text" name="days" value=""></input>
 <label>Enter Tasks:</label>
@@ -44,6 +153,109 @@ div h1 h2 body{margin: 0px; padding: 0px;}
 
 <!-- <input type='button' value='Remove Button' id='removeButton'>-->
  <div id="datafields"><h3></h3></div>
+ </div>
+ <!-- START OF CALCULATOR and resizer-->
+
+ <div id="calculator">
+ <div id="sizecontrol">
+ <p>Text size contorler</p>
+<a href="#" class="texttoggler" rel="xsmallview" title="extra small size"><img src="textresize/images/xsmallview.png" /></a> 
+<a href="#" class="texttoggler" rel="smallview" title="small size"><img src="textresize/images/smallview.png" /></a> 
+<a href="#" class="texttoggler" rel="normalview" title="normal size"><img src="textresize/images/normalview.png" /></a> 
+<a href="#" class="texttoggler" rel="largeview" title="large size"><img src="textresize/images/largeview.png" /></a> 
+<a href="#" class="texttoggler" rel="xlargeview" title="extra large size"><img src="textresize/images/xlargeview.png" /></a>
+
+<script type="text/javascript">
+documenttextsizer.setup("texttoggler")
+</script>
+</div>
+ 	<table class="calculator" id="calc">
+            <tr>
+                <td colspan="4" class="calc_td_result">
+                    <input type="text" readonly="readonly" name="calc_result" id="calc_result" class="calc_result" onkeydown="javascript:key_detect_calc('calc',event);" />
+                </td>
+            </tr>
+            <tr>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="CE" onclick="javascript:f_calc('calc','ce');" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="&larr;" onclick="javascript:f_calc('calc','nbs');" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="%" onclick="javascript:f_calc('calc','%');" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="+" onclick="javascript:f_calc('calc','+');" />
+                </td>
+            </tr>
+            <tr>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="7" onclick="javascript:add_calc('calc',7);" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="8" onclick="javascript:add_calc('calc',8);" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="9" onclick="javascript:add_calc('calc',9);" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="-" onclick="javascript:f_calc('calc','-');" />
+                </td>
+            </tr>
+                        <tr>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="4" onclick="javascript:add_calc('calc',4);" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="5" onclick="javascript:add_calc('calc',5);" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="6" onclick="javascript:add_calc('calc',6);" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="x" onclick="javascript:f_calc('calc','*');" />
+                </td>
+            </tr>
+            <tr>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="1" onclick="javascript:add_calc('calc',1);" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="2" onclick="javascript:add_calc('calc',2);" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="3" onclick="javascript:add_calc('calc',3);" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="&divide;" onclick="javascript:f_calc('calc','');" />
+                </td>
+            </tr>
+            <tr>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="0" onclick="javascript:add_calc('calc',0);" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="&plusmn;" onclick="javascript:f_calc('calc','+-');" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="," onclick="javascript:add_calc('calc','.');" />
+                </td>
+                <td class="calc_td_btn">
+                        <input type="button" class="calc_btn" value="=" onclick="javascript:f_calc('calc','=');" />
+                </td>
+            </tr>
+        </table>
+        <script type="text/javascript">
+                document.getElementById('calc').onload=init_calc('calc');
+        </script>
+         <script type="text/javascript">
+            calendar();
+        </script>
+ </div>
+
+<!-- END OF CALCULATOR -->
+
 <script type="text/javascript">
 
 
@@ -116,76 +328,64 @@ var submit = $('<button>Submit Data</button>').attr({"id": 'submit'});
 	submit.appendTo("#datafields");
 
      //START OF take task value for each day
-$("#submit").click(function(){
+     $("#submit").click(function(){
 
-var taskarray = $('.days');
-console.log(taskarray);
+     	var taskarray = $('.days');
+     	console.log(taskarray);
 
-var len = taskarray.length;
-	for(var i = 0; i < len; i++){
-		console.log(taskarray[i].value);
-	}
+     	var len = taskarray.length;
+     	for(var i = 0; i < len; i++){
+     		console.log(taskarray[i].value);
+     	}
 ///////////////////////////////////////////////////////////
 
-
 var periodstart = $('.tasksstart').val();
-console.log(periodstart);
+console.log('start' + periodstart);
 
 // var lentasks1 = periodstart.length;
 // 	for(var j = 0; j<lentasks1; j++){
 // 		console.log(periodstart[j].value);
 // 	}
 ////////////////
+
 var periodend = $('.tasksend').val();
-console.log(periodend);
+console.log('end' + periodend);
 
 // var lentasks2 = periodend.length;
 // 	for (var k = 0; k<lentasks2; k++) {
 // 		console.log(periodend[k].value);
 // 	}
 
-var periodarray = $(periodstart,periodend);
+var periodarray = [periodstart,periodend];
+console.log('periodarray' + periodarray);
+var taskSum = 0;
+
+for(var p = periodarray[0]-1; p < periodarray[1]; p++){
+	taskSum+= +taskarray[p].value;
+}
+
+console.log('taskSum' + taskSum);
+
+///////////////////////////////////////////////////
 
 
-// var sum = [];
-// for (var i = 0, len = taskarray.length; i < len; i++){
-// 	sum += taskarray[i].value;
-// } return sum;
+// var range = Range(periodstart, periodend); 
 
-var Range = function (periodstart, periodend) {
-var periodstart = $('.tasksstart').val();
-var periodend = $('.tasksend').val();
-
-  var result = [];
-  
-  for(var j = 1;  j <= periodend; j++) {
-    result.push(j);
-  }
-  return result;
-
-  
-};
-
-var range = Range(periodstart, periodend); 
-//как да си взема данните от periodstart 
-//до periodend от масива var taskarray = $('.days');
-
-
-console.log("range: ", range);
+// console.log("range: ", range);
 
  
-//SUMIRA RANGE   това е едно тестово масивче за събиране на данните от range
-var Sum = function (array) {
-  var sum = 0;
+// //SUMIRA RANGE   
+// var Sum = function (array) {
+//   var sum = 0;
  
-  for(var i = 0, last = array.length; i < last; i++) {
-    sum += array[i];
+//   for(var i = 0, last = array.length; i < last; i++) {
+//     sum += array[i];
   
-  }
-  return sum;
-};
-var sum = Sum(range);
-console.log("sum: ", sum);
+//   }
+//   return sum;
+// };
+// var sum = Sum(range);
+// console.log("sum: ", sum);
 
 
 

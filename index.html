@@ -115,21 +115,89 @@ var submit = $('<button>Submit Data</button>').attr({"id": 'submit'});
 
 	submit.appendTo("#datafields");
 
-     //START OF take value for each day function
-$("#submit").click( function(){
-	console.log(1)
-var divArr = $('.days');
-console.log(divArr);
+     //START OF take task value for each day
+$("#submit").click(function(){
 
-var len = divArr.length;
+var taskarray = $('.days');
+console.log(taskarray);
+
+var len = taskarray.length;
 	for(var i = 0; i < len; i++){
-		console.log(divArr[i].value);
+		console.log(taskarray[i].value);
 	}
+///////////////////////////////////////////////////////////
+
+
+var periodstart = $('.tasksstart').val();
+console.log(periodstart);
+
+var lentasks1 = periodstart.length;
+	for(var j = 0; j<lentasks1; j++){
+		console.log(periodstart[j].value);
+	}
+////////////////
+var periodend = $('.tasksend').val();
+console.log(periodend);
+
+var lentasks2 = periodend.length;
+	for (var k = 0; k<lentasks2; k++) {
+		console.log(periodend[k].value);
+	}
+
+var periodarray = $(periodstart,periodend);
+
+
+// var sum = [];
+// for (var i = 0, len = taskarray.length; i < len; i++){
+// 	sum += taskarray[i].value;
+// } return sum;
+
+var Range = function (periodstart, periodend) {
+var periodstart = $('.tasksstart').val();
+var periodend = $('.tasksend').val();
+
+  var result = [];
+  
+  for(var j = 1;  j <= periodend; j++) {
+    result.push(j);
+  }
+  return result;
+
+  
+};
+
+var range = Range(periodstart, periodend);
+console.log("range: ", range);
+
+ 
+ 
+var Sum = function (array) {
+  var sum = 0;
+ 
+  for(var j = periodstart, last = periodend; j <= last; j++) {
+    sum += array[j];
+  }
+  return sum;
+};
+var sum = Sum(taskarray);
+console.log("sum: ", sum);
+
+
+
+
+
+
 });
+
+
+
+
+
+
+
+
+
   });
-
-
-
 
 </script>
 

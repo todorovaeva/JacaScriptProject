@@ -166,20 +166,25 @@ var periodend = $('.tasksend').val();
   
 };
 
-var range = Range(periodstart, periodend);
+var range = Range(periodstart, periodend); 
+//как да си взема данните от periodstart 
+//до periodend от масива var taskarray = $('.days');
+
+//var range = Range(1,10); с прости цифри работи
 console.log("range: ", range);
 
  
- 
+//SUMIRA RANGE   това е едно тестово масивче за събиране на данните от range
 var Sum = function (array) {
   var sum = 0;
  
-  for(var j = periodstart, last = periodend; j <= last; j++) {
-    sum += array[j];
+  for(var i = 0, last = array.length; i < last; i++) {
+    sum += array[i];
+  
   }
   return sum;
 };
-var sum = Sum(taskarray);
+var sum = Sum(range);
 console.log("sum: ", sum);
 
 

@@ -5,96 +5,7 @@
 	<title>Java Script Project</title>
 	<link rel="stylesheet" href="css/style.css" charset="utf-8" />
 	<style type="text/css">
-div h1 h2 body{margin: 0px; padding: 0px; }
-h1 {padding: 50px; font-size:28px; background-color: #c5f442; 
--webkit-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
--moz-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
-}
-body {
-	font-family: Arial;
-	color:#333;
-background: url('images/background.jpg');
-background-color:#fff ;
 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-#container{
-	float:left;
-	width: 50%;
-	float: left;
-    width: 50%;
-    padding: 20px;
-    margin-top: 50px;
-    background-color: #cdf6f6;
-    -webkit-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
-    -moz-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
-    box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
-}
-#calculator{
-	float: right;
-    padding: 0px 50px 0 0;
-
-}
-#sizecontrol{
-	margin-bottom: 25px;
-	padding: 10px;
-	background-color: #c5f442;
-	-webkit-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
-    -moz-box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
-	box-shadow: 6px 6px 22px 2px rgba(184,184,184,1);
-}
-#periodscontainer{
-	margin:15px 0 15px 0;
-	background-color: #999;
-    width: 600px;
-}
-#start{
-	width: 200px;
-	float: left;
-	padding: 5px 0 0 0;
-	}
-#end{
-	width: 200px;
-	float: right;
-	padding: 5px 200px 0 0;
-	}
-#submit{
-	margin:15px 0 20px 0;
-}
-
-.main {
-width:200px;
-border:1px solid black;
-}
- 
-.month {
-background-color:black;
-font:bold 12px verdana;
-color:white;
-}
- 
-.daysofweek {
-background-color:gray;
-font:bold 12px verdana;
-color:white;
-}
- 
-.days {
-font-size: 12px;
-font-family:verdana;
-color:black;
-background-color:#fff;
-padding: 2px;
-}
- 
-.days #today{
-font-weight: bold;
-color: red;
-}
 	</style>
 
 <!-- doc text resizer -->	
@@ -268,6 +179,8 @@ documenttextsizer.setup("texttoggler")
 $(document).ready(function(){
  var counter = 0;
 
+
+
     $("#addButton").click(function () {
     	var days = $("#days").val();
     	var tasks = $("#tasks").val();
@@ -328,13 +241,18 @@ for (var i = 0; i < tasks; i++) {
 
 var submit = $('<button>Submit Data</button>').attr({"id": 'submit'});
 
-	submit.appendTo("#datafields");
+
 	 submit.focus(function(){
 	 	$(this).css('background', 'gray');
 		$(this).css('color', 'white');
 	 })
 
      //START OF take task value for each day
+     submit.hover(function(){
+	 	$(this).css('background', 'red');
+		$(this).css('color', 'white');
+		
+	 });
      $("#submit").click(function(){
 
      	var taskarray = $('.days');
@@ -373,23 +291,32 @@ for(var p = periodarray[0]-1; p < periodarray[1]; p++){
 console.log('taskSum' + taskSum);
 
 
-document.getElementById("container").innerHTML = ('<h2>The sum of the tasks for the period is: ' + taskSum+ '</h2>');
+document.getElementById("container").innerHTML = ('<h2>The sum of the tasks for the period is: ' + taskSum + '</h2>');
 
 
 
-// var butn = $('button');
-// 	$('butn').appendTo("container");
-// 	console.log(butn);
+var back = $('<button>Check another period</button>').attr({"id": 'back'});
+	
+	back.appendTo("#container");
+	 back.hover(function(){
+	 	$(this).css('background', 'red');
+		$(this).css('color', 'white');
+		
+	 })
 
+$('#back').click(function() {
+    location.reload();
+});
 
-}
+// document.getElementById("container").innerHTML = ('<h2>The sum of the tasks for the period is: ' + taskSum + '</h2>');
+
+} //end of click submit func
 )
 
-	// btn.on({mouseon:function(){$(this).css('color', 'red');}})
 
-// 	$('#btn').click(function() {
-//     location.reload();
-// });
+
+
+
 
 });
 

@@ -240,12 +240,12 @@ for (var i = 0; i < tasks; i++) {
      //START OF submit data button
 
 var submit = $('<button>Submit Data</button>').attr({"id": 'submit'});
-
+submit.appendTo("#datafields");
 
 	 submit.focus(function(){
 	 	$(this).css('background', 'gray');
 		$(this).css('color', 'white');
-	 })
+	 });
 
      //START OF take task value for each day
      submit.hover(function(){
@@ -253,6 +253,7 @@ var submit = $('<button>Submit Data</button>').attr({"id": 'submit'});
 		$(this).css('color', 'white');
 		
 	 });
+
      $("#submit").click(function(){
 
      	var taskarray = $('.days');

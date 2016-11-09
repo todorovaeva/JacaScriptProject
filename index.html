@@ -329,6 +329,10 @@ for (var i = 0; i < tasks; i++) {
 var submit = $('<button>Submit Data</button>').attr({"id": 'submit'});
 
 	submit.appendTo("#datafields");
+	 submit.focus(function(){
+	 	$(this).css('background', 'gray');
+		$(this).css('color', 'white');
+	 })
 
      //START OF take task value for each day
      $("#submit").click(function(){
@@ -349,7 +353,7 @@ console.log('start' + periodstart);
 // 	for(var j = 0; j<lentasks1; j++){
 // 		console.log(periodstart[j].value);
 // 	}
-////////////////
+
 
 var periodend = $('.tasksend').val();
 console.log('end' + periodend);
@@ -365,47 +369,32 @@ var taskSum = 0;
 
 for(var p = periodarray[0]-1; p < periodarray[1]; p++){
 	taskSum+= +taskarray[p].value;
-}
-
+};
 console.log('taskSum' + taskSum);
 
-///////////////////////////////////////////////////
 
-
-// var range = Range(periodstart, periodend); 
-
-// console.log("range: ", range);
-
- 
-// //SUMIRA RANGE   
-// var Sum = function (array) {
-//   var sum = 0;
- 
-//   for(var i = 0, last = array.length; i < last; i++) {
-//     sum += array[i];
-  
-//   }
-//   return sum;
-// };
-// var sum = Sum(range);
-// console.log("sum: ", sum);
+document.getElementById("container").innerHTML = ('<h2>The sum of the tasks for the period is: ' + taskSum+ '</h2>');
 
 
 
+// var butn = $('button');
+// 	$('butn').appendTo("container");
+// 	console.log(butn);
 
 
+}
+)
+
+	// btn.on({mouseon:function(){$(this).css('color', 'red');}})
+
+// 	$('#btn').click(function() {
+//     location.reload();
+// });
 
 });
 
 
 
-
-
-
-
-
-
-  });
 
 </script>
 

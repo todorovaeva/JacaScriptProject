@@ -65,7 +65,7 @@ start=setInterval("animatein()",50)
 
 
 <!-- <input type='button' value='Remove Button' id='removeButton'>-->
- <div id="datafields"><h3></h3></div>
+ <div id="datafields"><p> </p></div>
  </div>
  <!-- START OF CALCULATOR and resizer-->
 
@@ -213,7 +213,7 @@ for (var i = 0; i < tasks; i++){
 	var TextBoxDivStart = $(document.createElement('div'))
 	     .attr("id", 'TextBoxDivStart');
 
-	TextBoxDivStart.after().html('<label>Start Day: </label>' +
+	TextBoxDivStart.after().html('<label>Start Day must be > End Day: </label>' +
 	      '<input type="text" name="textbox" class="tasksstart" value="" >');
 
 	TextBoxDivStart.appendTo("#start");

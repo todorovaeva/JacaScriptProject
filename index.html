@@ -56,9 +56,9 @@ start=setInterval("animatein()",50)
 <div id="container">
 
 <label>Enter days:</label>
-<input id="days" type="text" name="days" value=""></input>
+<input id="days" type="number" name="days" value=""></input>
 <label>Enter Tasks:</label>
-<input id="tasks" type="text" name="tasks" value=""></input>
+<input id="tasks" type="number" name="tasks" value=""></input>
 
 <input type='button' value='Add Fields' id='addButton'>
 <div id='TextBoxesGroup'><br></div>
@@ -214,7 +214,7 @@ for (var i = 0; i < tasks; i++){
 	     .attr("id", 'TextBoxDivStart');
 
 	TextBoxDivStart.after().html('<label>Start Day must be > End Day: </label>' +
-	      '<input type="text" name="textbox" class="tasksstart" value="" >');
+	      '<input type="number" name="textbox" class="tasksstart" value="" >');
 
 	TextBoxDivStart.appendTo("#start");
 }
@@ -228,7 +228,7 @@ for (var i = 0; i < tasks; i++) {
 	var TextBoxDivEnd = $(document.createElement('div'))
 	     .attr("id", 'TextBoxDivEnd');
 	TextBoxDivEnd.after().html('<label>End Day: </label>'+
-	'<input type="text" name="textbox" class="tasksend" value="" >');
+	'<input type="number" name="textbox" class="tasksend" value="" >');
 
 	TextBoxDivEnd.appendTo("#end");    
 
